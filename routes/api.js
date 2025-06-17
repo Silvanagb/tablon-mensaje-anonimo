@@ -28,12 +28,17 @@ module.exports = function (app) {
         .sort((a, b) => b.bumped_on - a.bumped_on)
         .slice(0, 10)
         .map(t => ({
-          _id: t._id,
-          text: t.text,
-          created_on: t.created_on,
-          bumped_on: t.bumped_on,
-          replies: t.replies.slice(-3)
-        }));
+  _id: t._id,
+  text: t.text,
+  created_on: t.created_on,
+  bumped_on: t.bumped_on,
+  replies: t.replies.slice(-3).map(r => ({
+    _id: r._id,
+    text: r.text,
+    created_on: r.created_on
+  }))
+}));
+
       res.json(boardThreads);
     })
 
