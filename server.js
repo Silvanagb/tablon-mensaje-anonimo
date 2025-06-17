@@ -1,5 +1,5 @@
-const helmet = require('helmet');
 'use strict';
+const helmet = require('helmet');
 require('dotenv').config();
 const express     = require('express');
 const bodyParser  = require('body-parser');
