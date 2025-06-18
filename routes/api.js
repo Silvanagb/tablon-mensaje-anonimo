@@ -54,10 +54,10 @@ module.exports = function (app) {
     })
 
     .put((req, res) => {
+  const board = req.params.board;
   const { thread_id } = req.body;
 
-  // Aseguramos que ambos sean string para comparar correctamente
-  const thread = threads.find(t => String(t._id) === String(thread_id));
+  const thread = threads.find(t => t.board === board && String(t._id) === String(thread_id));
 
   if (!thread) {
     return res.send('thread not found');
