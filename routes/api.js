@@ -54,12 +54,15 @@ module.exports = function (app) {
     })
 
     .put((req, res) => {
-  const { thread_id } = req.body;
-  const thread = threads.find(t => t._id == thread_id); 
-  if (!thread) return res.send('thread not found');
+  const thread_id = String(req.body.thread_id); // fuerza que sea string
+  const thread = threads.find(t => t._id === thread_id);
+  if (!thread) {
+    return res.send('thread not found');
+  }
   thread.reported = true;
-  res.send('reported');
-});
+  return res.send('reported');
+})
+
 
 
   app.route('/api/replies/:board')
