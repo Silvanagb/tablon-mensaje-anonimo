@@ -1,4 +1,5 @@
 'use strict';
+
 const helmet = require('helmet');
 require('dotenv').config();
 const express     = require('express');
@@ -10,6 +11,7 @@ const fccTestingRoutes  = require('./routes/fcctesting.js');
 const runner            = require('./test-runner');
 
 const app = express();
+
 app.use(
   helmet({
     frameguard: { action: 'sameorigin' },
