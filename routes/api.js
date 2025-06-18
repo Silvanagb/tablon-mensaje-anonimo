@@ -35,7 +35,8 @@ module.exports = function (app) {
       created_on: r.created_on
     }))
   });
-})
+});
+
 
       res.json(boardThreads);
     })
