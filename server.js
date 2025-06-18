@@ -12,9 +12,9 @@ const runner            = require('./test-runner');
 const app = express();
 app.use(
   helmet({
-    frameguard: { action: 'sameorigin' },       
-    dnsPrefetchControl: { allow: false },           
-    referrerPolicy: { policy: 'same-origin' }       
+    frameguard: { action: 'sameorigin' },
+    dnsPrefetchControl: { allow: false },
+    referrerPolicy: { policy: 'same-origin' }
   })
 );
 
