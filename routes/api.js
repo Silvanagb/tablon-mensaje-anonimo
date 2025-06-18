@@ -54,11 +54,15 @@ module.exports = function (app) {
     })
 
     .put((req, res) => {
-  const thread_id = String(req.body.thread_id); // Forzamos a string
-  const thread = threads.find(t => String(t._id) === thread_id);
+  const { thread_id } = req.body;
+
+  // Aseguramos que ambos sean string para comparar correctamente
+  const thread = threads.find(t => String(t._id) === String(thread_id));
+
   if (!thread) {
     return res.send('thread not found');
   }
+
   thread.reported = true;
   return res.send('reported');
 })
