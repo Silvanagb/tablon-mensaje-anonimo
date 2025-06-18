@@ -55,10 +55,8 @@ module.exports = function (app) {
 
     .put((req, res) => {
       const { thread_id } = req.body;
-      const thread = threads.find(t => t._id === String(thread_id));
-      if (!thread) {
-        return res.send('thread not found');
-      }
+      const thread = threads.find(t => t._id === thread_id);
+      if (!thread) return res.send('thread not found');
       thread.reported = true;
       return res.send('reported');
     });
