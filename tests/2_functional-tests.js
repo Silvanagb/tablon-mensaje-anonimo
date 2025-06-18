@@ -70,7 +70,7 @@ describe('Functional Tests', function () {
   it('PUT /api/threads/test => report thread', function (done) {
     chai.request(server)
       .put('/api/threads/test')
-      .send({ report_id: threadId })
+      .send({ thread_id: threadId })  // ✅ correcto
       .end(function (err, res) {
         assert.equal(res.status, 200);
         assert.equal(res.text, 'reported');
